@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-primary" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Geocery Cloud</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Cart<span><i class="fas fa-shopping-cart"></i></span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="welcome">
+            <h2>Welcome to Geocery Cloud</h2>
+            <h4>The Best way to shop!.</h4>
+            <button class="btn btn-primary">SHOP ALL</button>
+        </div>
+        <div class="checkbox">
+                <input type="checkbox" id="checkbox">
+                <label for="checkbox">Toggle Slide Show</label>
+            </div>
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li class="circle" id="currentSlide1"></li>
+                    <li class="circle" id="currentSlide2"></li>
+                    <li class="circle" id="currentSlide3"></li>
+                </ol>
+                <div class="carousel-inner" id="slideshow">
+                        <ul id="image_slider">
+                            </ul>
+                </div>
+                <a class="left carousel-control" href="#carousel" id="left"  data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel" id="right"  data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+    </section>
+
+    <section class="container">
+        <div class="welcome">
+            <h1></h1>
+            <button class="btn btn-primary">GO SHOPPING</button>
+        </div>
+            
+    </section>
+
+    <footer class="navbar navbar-primary ">
+        <a class="navbar-brand" href="#">Geocery Cloud</a>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">About us</a>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

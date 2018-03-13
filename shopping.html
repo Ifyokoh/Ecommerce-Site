@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping Page</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+        <nav class="navbar navbar-primary" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Geocery Cloud</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Cart
+                                <span>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+    <section class="container">
+        <div class="welcome">
+            <h2>Welcome to Geocery</h2>
+            <h4>The Best way to shop!.</h4>
+            <div class="sort">
+            <label>Sort By:</label>
+            <select name="sorting" class="sorting">
+                <option selected disabled>None</option>
+                <option value="alpha">Alphabetically</option>
+                <option value="price">Price</option>
+                <option value="rate">Rating</option>
+            </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 vdivide list">
+                <h4><a href="#" id="category1">Household and Beauty</a></h4>
+                <ul id="category1">
+                        <li>
+                            <a href="#" id="subcategory">Baby Care</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Drug Store</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Health and Personal Care</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Household Supplies</a>
+                        </li>
+                    </ul>
+                <h4><a href="#" id="category2">Pantry Items</a></h4>
+                <ul id="category2">
+                        <li>
+                            <a href="#" id="subcategory">Beverages</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Canned Food</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Cooking and Baking Needs</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Pasta and Noodles</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Snacks</a>
+                        </li>
+                    </ul>
+                <h4><a href="#" id="category3">Perishables</a></h4>
+                <ul id="category3">
+                        <li>
+                            <a href="#" id="subcategory">Bread and Bakery</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Cheese</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Dairy and Eggs</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Frozen Foods</a>
+                        </li>
+                    </ul>
+                <h4><a href="#" id="category4">Produce</a></h4>
+                <ul id="category4">
+                        <li>
+                            <a href="#" id="subcategory">Fruits</a>
+                        </li>
+                        <li>
+                            <a href="#" id="subcategory">Vegetables</a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-md-9">
+                    <div id="items">
+
+                        </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="navbar navbar-primary ">
+            <a class="navbar-brand" href="#">Geocery Cloud</a>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">About us</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    
+</body>
+
+</html>
