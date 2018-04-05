@@ -46,16 +46,24 @@ $(document).ready(function () {
     $.getJSON("https://webmppcapstone.blob.core.windows.net/data/itemsdata.json", function(data) {
         var imgList = '';
         for(var i = 0; i < 3; i++) {
-        imgList += `<li><img src="${data[i].subcategories[i].items[i].imagelink}"></li>`;
-         
+            //subcategory.items.forEach(function (item) {
+                imgList += `<div class="item"><img src="${data[i].subcategories[i].items[i].imagelink}" ></div>`;
+            //})
         } 
             console.log(imgList);
-            $('#image_slider').append(imgList);
+            $('#slideshow').append(imgList);
     });
+    
+    //show product details from home page
+    $('#slideshow').on('click', '.item', function(item) {
+        sessionStorage.setItem('itemName', item.target.id);
+        sessionStorage.setItem('subcategory', JSON.stringify(subcategory1));
+        window.location = 'product.html';
+        return false;
+    });
+    
 
-    //to display the items from the itemsdata.json file
     $('a#subcategory').on('click', function (event) {
-
         var json = null;
         $.ajax({
             'async': false,
@@ -80,7 +88,8 @@ $(document).ready(function () {
 
     function getSubcategory(categoryName, json) {
         let foundSubcategory = 'not found';  
-        json.forEach(function (category) {  
+        json.forEach(function (category) { 
+        // console.log(category) 
             category.subcategories.forEach(function (subcategory) { 
                 if (subcategory.name === categoryName) { 
                     foundSubcategory = subcategory;
@@ -89,21 +98,22 @@ $(document).ready(function () {
         })
         return foundSubcategory;  
     }
-
+    let subcategory1 = [];
+    var cart = [];
     function attachToDOM(subcategory) {
+    subcategory1 = subcategory
         $('#items').html(''); 
         if (!subcategory.items.length) { 
             $('#subcategoryName').html(subcategory.name); 
-            $('#items').text('There are no items in stock'); 
+            $('#items').text('There are no items in stock');
         }
         else { 
             let output = '';
-            subcategory.items.forEach(function (item) { 
-                console.log(item);
+            subcategory.items.forEach(function (item) {
                 output += `
                 <div class="col-md-3 items">
                     <div class='photo'>
-                        <img src="${item.imagelink}">
+                        <img src="${item.imageLink}" id="${item.name}">
                     </div>
                     <div class="info">
                         <h5>${item.name}</h5>
@@ -111,7 +121,7 @@ $(document).ready(function () {
                         <h6 class="hidden rate">${item.rating}</h6>
                     </div>
                     <div class="add">
-                    <button class="btn btn-primary add">Add to cart</button>
+                    <button class="btn btn-primary" id="${item.name}">Add to cart</button>
                     </div>
                 </div>
                 `;
@@ -120,53 +130,24 @@ $(document).ready(function () {
         }
     }
 
-
-    //to show product details
-    //function itemSelected(name){
-    $('#items').delegate('.items', 'click', '${item.name}', function(id) {
-        sessionStorage.setItem('itemName', id);
-        window.location = 'product.html';
-        return false;
-      })
-
-      function getItem(subcategory){
-        let itemName = sessionStorage.getItem('itemName');
-        subcategory.items[i].forEach(function (name) {
-            console.log(name);
-            let output =`
-        <div class="row">
-		
-        </div>
-      `;
-
-      $('#item').html(output);
-        })
-      }
-
-
-    //to add to cart
-    //var itemCount = 0;
-
-    $('button.add').click(function () {
-        let output = '';
-        output += `
-
-            <div class="product-image">
-                <img src="${item.imagelink}">
-            </div>
-            <div class="product-name">
-                <div class="product-title">${item.name}</div>
-            </div>
-            <div class="product-price">$${item.price}</div>
-            <div class="product-quantity">
-                <input type="number" value="1" min="1">
-            </div>
-            <div class="product-line-price">45.99</div>
-        `;
-        $('.product').html(output);
-        // itemCount++;
-        // $('#itemCount').html(itemCount).css('display', 'block');
+    //show product details
+    $('#items').on('click', '.photo', function(item) {
+    sessionStorage.setItem('itemName', item.target.id);
+    sessionStorage.setItem('subcategory', JSON.stringify(subcategory1));
+    window.location = 'product.html';
+    return false;
     });
+
+    
+
+    
+    //add to cart
+    $('#items').on('click', '.add', function(item) {
+        localStorage.setItem('itemName', item.target.id);
+        localStorage.setItem('subcategory', JSON.stringify(subcategory1));
+        return false;
+        });
+        
 
 
     //sorting the items
@@ -221,17 +202,40 @@ $(document).ready(function () {
     displaySlides(slideValue);
 
     function currentSlide(n) {
-    //$('.carousel-indicators').delegate('li.circle', 'click', function(n) {
         displaySlides(slideValue = n);
-    //})
     }
+
+    $('li#currentSlide1').on('click', function(e){
+        e.preventDefault();
+        currentSlide(1);
+        })
+
+        $('li#currentSlide2').on('click', function(e){
+            e.preventDefault();
+            currentSlide(2);
+            })
+
+            $('li#currentSlide3').on('click', function(e){
+                e.preventDefault();
+                currentSlide(3);
+                })
 
     function arrowSlide(n) {
         displaySlides(slideValue += n);
     }
 
+    $('a#left').on('click', function(e){
+        e.preventDefault();
+        arrowSlide(-1);
+        })
+    
+        $('a#right').on('click', function(e){
+            e.preventDefault();
+            arrowSlide(1);
+            })
+
     var autoSlider;
-    $('.checkbox').delegate('input#checkbox', 'click', function() {
+    $('input#checkbox').on('click', function(){
         if (document.getElementById("checkbox").checked == true) {
             autoSlider = setInterval(function () {
                 $('#slideshow > div:first')
@@ -265,7 +269,7 @@ $(document).ready(function () {
             circles[i].className = circles[i].className.replace('active', '');
         }
         items[slideValue - 1].style.display = 'block';
-        circles[slideValue - 1].className += ' active';
+        //circles[slideValue - 1].className += ' active';
     }
 
 });

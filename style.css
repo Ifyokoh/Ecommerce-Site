@@ -58,6 +58,8 @@ nav, footer {
 
 .carousel .item > img {
     display: inline-block;
+    height: 300px;
+    width: 50%;
 }
 
 .carousel-control.left, .carousel-control.right {
@@ -68,22 +70,43 @@ nav, footer {
  .glyphicon-chevron-left, .glyphicon-chevron-right {
      color: #337ab7;
  }
- 
- .wrapper {
-    text-align: center;
-    margin: 10%;
+
+ #slideshow {
+     margin: auto;
+     /* border: 1px solid #ddd; */
+     padding: 10px;
+     /* width: 500px; */
+    overflow: hidden;
+  }
+  
+  #slideshow ul {
+    /* position: relative;
+    margin: 0;
+    padding: 0;
+    width:2400px;
+    list-style: none; */
+    list-style: none;
+    /* width: 1500px;  */
+    position: relative; 
+    /* left: -1000px;  */
+    padding: 0; 
+    margin: 0;
+  }
+  
+  #slideshow ul li {
+    /* position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center; */
+    float: left;
+  }
+
+#slideshow li img{
+    height: 200px;
+    width: 50%;
 }
-
-.top_sales {
-    padding: 2%;
-    margin-left: 5%;
-    margin-bottom: 5%;
-    -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
-}
-
-
 
 /* shopping page */
 .list ul {
@@ -189,4 +212,19 @@ hr {
     height: 100px;
 }
 
+
+/* product */
+.details {
+    line-height: 20%;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    color: #585857;
+}
+
+
+.details_image img {
+        margin: 0 auto;
+        width: 100%;
+        height:300px; 
+    
+}
 

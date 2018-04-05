@@ -3,12 +3,11 @@
 
 <head>
     <title>Product Page</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="script.js"></script> -->
 </head>
 
 <body>
@@ -26,20 +25,21 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">Cart
-                                <span>
-                                    <i class="fas fa-shopping-cart"></i>
-                                </span>
-                            </a>
-                        </li>
+                        <li><a href="#">Shop All</a></li>
+                        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                     </ul>
                 </div>
             </nav>
+            
+            <section class="container">
+                <button class="btn btn-primary"> < &nbsp;&nbsp;BACK</button>
+            </section>
 
     <section class="container">
-        <div id="item "class="well"></div>
+        <div id="item" class="well"></div>
     </section>
+
+    
 
     <footer class="navbar navbar-primary ">
             <a class="navbar-brand" href="#">Geocery Cloud</a>
@@ -55,9 +55,45 @@
             </div>
         </footer>
 
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script>
-            getItem();
-        </script>
+            $(document).ready(function () {
+                getItem()
+            });
+            function getItem(){
+                // console.log(subcategory1)
+                let itemName = sessionStorage.getItem('itemName');
+                let subcategory = JSON.parse(sessionStorage.getItem('subcategory'));
+                // console.log(sessionStorage.getItem('itemName'));
+                let output = ''
+                subcategory.items.forEach(function (item) {
+                    // console.log(item);
+                    if(item.name == itemName){
+                    output +=`
+                            <div class="row">
+                            <div class="col-md-6 details_image">
+                                <img src="${item.imagelink}">
+                            </div>
+                            <div class="col-md-6 details">
+                                <h3 class="details_name"><strong>${item.name}</strong></h3>
+                                <h5><strong>Rating:</strong>&nbsp;&nbsp;${item.rating}/5</h5>
+                                <h4 style="color:#c66"><strong>Price:</strong>&nbsp;&nbsp;<strong>$${item.price}<strong></h4>
+                                <h5><strong>Product Description:</strong>&nbsp;&nbsp;${item.description}</h5>
+                                <h5><strong>In Stock:</strong>&nbsp;&nbsp;${item.stock}</h5>
+                                Quantity: <input type="number" value="1" min="1"><br><br><br><br>
+                                <button class="btn btn-primary" >Add to cart</button>
+                            </div>
+                            </div>
+                        `;
+                    }
+                    
+                    
+                //document.getElementById('item').innerHTML= output
+                $('#item').html(output);
+                })
+                }
+                </script>
 </body>
 
 </html>
